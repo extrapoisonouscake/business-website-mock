@@ -1,8 +1,28 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from 'next/font/local'
 import "./globals.css";
+import { StyledCursor } from "./StyledCursor";
 
-const inter = Inter({ subsets: ["latin"] });
+const diatype = localFont({
+  src:[{
+    path:'../../public/fonts/ABCDiatype-Regular-Trial.otf',
+    weight:'400',
+    style:'normal'
+  },{
+    path:'../../public/fonts/ABCDiatype-Medium-Trial.otf',
+    weight:'600',
+    style:'normal'
+  }],
+  variable:'--font-diatype'
+})
+const gtFlexa = localFont({
+  src:[{
+    path:'../../public/fonts/GT-Flexa-Bold-Trial.woff2',
+    weight:'700',
+    style:'normal'
+  }],
+  variable:'--font-gt-flexa',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${diatype.variable} ${gtFlexa.variable} bg-black text-white`}>
+      <StyledCursor/>
+      <main className="p-6">{children}</main></body>
     </html>
   );
 }
