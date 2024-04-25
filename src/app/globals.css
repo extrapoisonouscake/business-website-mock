@@ -2,9 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family:var(--font-gt-flexa);
+  }
+  body{
+    min-height:100vh;
+  }
+  ::selection{
+    background:#fff;
+    color:#000;
+  }
+  [data-cursor-scale]:hover{
+    transform:scale(1.05);
+    transition:all .3s ease-in-out;
+  }
+  .gradientChangingText > div{
+    background:var(--gradient);
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
 }
 

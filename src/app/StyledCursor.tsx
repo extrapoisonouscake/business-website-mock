@@ -1,8 +1,8 @@
 "use client"
 
-import { MouseEvent, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 
-const CURSOR_SIZE = 10 * 4// size * 4 === pixels
+const CURSOR_SIZE = 8 * 4// size * 4 === pixels
 
 
 
@@ -21,10 +21,7 @@ export function StyledCursor(){
 		console.log(cursor)
 		if(!cursor) return
 
-		const hoverTargetHandler:EventListener = (e)=>{
-			e.target
-		}
-		document.querySelectorAll('[data-cursor-scale]').forEach(elem => elem.addEventListener('mouseover',hoverTargetHandler))
+		
 
 		let cursorX = 0;
 let cursorY = 0;
@@ -38,18 +35,16 @@ let scaleSpring = 0;
 let isHoveringLink = false;
 let requestAnimationFrameId:number
 		const handler = (e:MouseEvent)=>{
-			
-				// const halfOfSizeinPX = CURSOR_SIZE * 4 / 2
-				// cursor.style.transform = `translate(${e.pageX + halfOfSizeinPX}px,${e.pageY + halfOfSizeinPX}px)`
 				cursorY = e.pageY
 				cursorX = e.pageX
-				console.log(cursorY)
 		}
 		document.addEventListener('mousemove',handler)
 		const animateCursor = ()=> {
+			if(![cursorX,cursorY].every(num => num === 0)){
+				cursor.style.display = 'block'
+			}
 			const dx = cursorX - CURSOR_SIZE / 2 - actualX - 1;
 			const dy = cursorY - CURSOR_SIZE / 2 - actualY - 1;
-			console.log({cursorX,dx,actualX,velocityX})
 			// const toCheck = [dx,dy].map(Math.abs)
 			// if(toCheck.every(n => n > 0 && n < 0.001)) return
 			const forceX = dx * springStrength;
@@ -83,11 +78,12 @@ let requestAnimationFrameId:number
 		  requestAnimationFrameId = window.requestAnimationFrame(animateCursor)
 		return ()=>{
 			document.removeEventListener('mousemove',handler)
+			
 			window.cancelAnimationFrame(requestAnimationFrameId)
 		}
 	},[ref])
 	return(
-		<div ref={ref} className={`fixed size-10 mix-blend-exclusion pointer-events-none ease-linear duration-100`}> {/* no dynamic classes :( */}
+		<div ref={ref} className={`z-50 fixed hidden size-8 mix-blend-exclusion pointer-events-none ease-linear duration-100`}> {/* no dynamic classes :( */}
 			<div className="absolute bg-white rounded-full mix-blend-exclusion size-full origin-center"/>
 		</div>
 	)
