@@ -1,22 +1,22 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useLayoutEffect, useRef } from "react"
 
 const CURSOR_SIZE = 8 * 4// size * 4 === pixels
 
 
 
 
-const scaleTarget = 1.5;
+const scaleTarget = 1.2;
 const scaleSpeed = 0.05;
 const scaleStrength = 0.15;
-const scaleFriction = 0.5;
+const scaleFriction = 0.2;
 const springStrength = 0.003;
 const springFriction = 0.1;
 const springSpeed = 0.8;
 export function StyledCursor(){
 	const ref = useRef<HTMLDivElement>(null)
-	useEffect(()=>{
+	useLayoutEffect(()=>{
 		const {current:cursor} = ref
 		console.log(cursor)
 		if(!cursor) return
@@ -75,10 +75,32 @@ let requestAnimationFrameId:number
 		  
 			requestAnimationFrameId = window.requestAnimationFrame(animateCursor);
 		  }
+
+		  const hoverHandler = ({type:eventType}:MouseEvent)=>{
+			console.log('sdsd')
+			if(eventType === 'mouseover'){
+				isHoveringLink = true
+			} else if(eventType === 'mouseleave'){
+				isHoveringLink = false
+			}
+		  }
+		  const elementsToScale = [...document.querySelectorAll('[data-cursor-scale]')].filter(element => element instanceof HTMLElement)
+		 
+		  console.log(elementsToScale,document.querySelectorAll('[data-cursor-scale]').length)
+		  elementsToScale.forEach(element =>{
+			element.addEventListener('mouseover',hoverHandler)
+			element.addEventListener('mouseleave',hoverHandler)
+		  })
 		  requestAnimationFrameId = window.requestAnimationFrame(animateCursor)
+		  
 		return ()=>{
 			document.removeEventListener('mousemove',handler)
-			
+			elementsToScale.forEach(element =>{
+				if(!(element instanceof HTMLElement)) return
+				element.removeEventListener('mouseover',hoverHandler)
+				element.removeEventListener('mouseleave',hoverHandler)
+				
+			  })
 			window.cancelAnimationFrame(requestAnimationFrameId)
 		}
 	},[ref])

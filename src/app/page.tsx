@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import TextTransition, { presets } from 'react-text-transition';
-const TEXTS:Array<{text:string,gradient:string}> = [{text:'modern',gradient:'linear-gradient(to right, #ed4264, #ffedbc)'},{text:'secure',gradient:'linear-gradient(90deg, hsla(139, 72%, 83%, 1) 0%, hsla(229, 89%, 75%, 1) 100%)'},{text:'failproof',gradient:'linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%)'}];
+const TEXTS:Array<{text:string,gradient:string}> = [{text:'modern',gradient:'linear-gradient(to right, #ffedbc, #ff5577)'},{text:'secure',gradient:'linear-gradient(90deg, hsla(139, 72%, 83%, 1) 0%, hsla(229, 89%, 75%, 1) 100%)'},{text:'failproof',gradient:'linear-gradient(90deg, hsla(295, 100%, 84%, 1) 0%, hsla(238, 100%, 77%, 1) 100%)'}];
 function ChangingText(){
 
 
