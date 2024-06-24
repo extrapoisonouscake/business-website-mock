@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { StyledCursor } from "./StyledCursor";
 import { Header } from "@/components/layout/Header";
 
 const diatype = localFont({
@@ -45,7 +44,6 @@ export default function RootLayout({
       <body
         className={`${diatype.variable} ${gtFlexa.variable} dark text-foreground bg-background`}
       >
-        <StyledCursor />
         <Header />
         <main className="pb-6 px-6">{children}</main>
       </body>
