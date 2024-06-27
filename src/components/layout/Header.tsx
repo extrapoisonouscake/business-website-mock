@@ -21,7 +21,7 @@ export function Header() {
       <NavbarBrand>
         <h5 className="text-3xl font-semibold">Evee</h5>
       </NavbarBrand>
-      <NavbarContent className="gap-8" justify="center">
+      <NavbarContent className="gap-8 hidden md:flex" justify="center">
         {links.map(({ href, label }) => (
           <NavbarItem key={href} ><Link href={href}>
             {label}

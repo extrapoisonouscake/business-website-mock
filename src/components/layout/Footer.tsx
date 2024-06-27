@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-   <footer className="w-full px-12 py-8 justify-between bg-zinc-900 flex items-center">
+   <footer className="w-full px-12 py-8 justify-between bg-zinc-900 flex items-center flex-wrap gap-4">
 	<Link href="#home" scroll={false}><h5 className="text-3xl font-semibold">Evee</h5></Link>
 	<ul className="flex items-center gap-5 text-zinc-400">
 		<li><Link href="#">Sales</Link></li>
