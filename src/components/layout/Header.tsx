@@ -1,10 +1,10 @@
-import { Button } from "@nextui-org/react";
+import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
 import Link from "next/link";
 
 const links: Array<{ label: string; href: string }> = [
   {
     label: "Home",
-    href: "",
+    href: "#home",
   },
   {
     label: "Features",
@@ -17,17 +17,20 @@ const links: Array<{ label: string; href: string }> = [
 ];
 export function Header() {
   return (
-    <header className="w-full px-7 py-5 flex justify-between items-center">
-      <ul className="flex gap-6 text-lg">
+    <Navbar isBlurred isBordered id="home" className="py-3">
+      <NavbarBrand>
+        <h5 className="text-3xl font-semibold">Evee</h5>
+      </NavbarBrand>
+      <NavbarContent className="gap-8" justify="center">
         {links.map(({ href, label }) => (
-          <Link key={href} href={href}>
+          <NavbarItem key={href} ><Link href={href}>
             {label}
-          </Link>
+          </Link></NavbarItem>
         ))}
-      </ul>
-      <Button data-cursor-scale color="primary" size="lg" variant="solid">
+      </NavbarContent>
+      <NavbarContent justify="end"><NavbarItem><Button data-cursor-scale color="primary" size="lg" variant="solid">
         Try it out
-      </Button>
-    </header>
+      </Button></NavbarItem></NavbarContent>
+    </Navbar>
   );
 }

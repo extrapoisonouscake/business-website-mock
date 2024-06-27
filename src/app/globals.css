@@ -11,6 +11,9 @@
   body{
     min-height:100vh;
   }
+  *{
+    scroll-behavior:smooth;
+  }
   ::selection{
     background:#fff;
     color:#000;

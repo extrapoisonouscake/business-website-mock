@@ -9,14 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/button": "^2.0.31",
-    "@nextui-org/react": "^2.3.6",
-    "next": "14.2.1",
+    "@nextui-org/button": "^2.0.34",
+    "@nextui-org/react": "^2.4.2",
+    "framer-motion": "^11.2.12",
+    "next": "^14.2.4",
     "react": "^18",
     "react-dom": "^18",
     "react-text-transition": "^3.1.0"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

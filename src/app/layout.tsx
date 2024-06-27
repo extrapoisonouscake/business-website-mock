@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 const diatype = localFont({
   src: [
@@ -45,7 +46,8 @@ export default function RootLayout({
         className={`${diatype.variable} ${gtFlexa.variable} dark text-foreground bg-background`}
       >
         <Header />
-        <main className="pb-6 px-6">{children}</main>
+        <main className="pb-32 px-6">{children}</main>
+        <Footer/>
       </body>
     </html>
   );

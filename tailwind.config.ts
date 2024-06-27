@@ -34,6 +34,6 @@ const config: Config = {
       },
     }),
   ],
-  safelist:['scale-105']
+  safelist:['text-green-500','text-pink-500','text-yellow-400','text-purple-500']
 };
 export default config;
